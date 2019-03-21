@@ -23,16 +23,16 @@ public class LoginServlet extends HttpServlet
 
     static {
     	try{  
-    		Class.forName("com.mysql.jdbc.Driver");  
-    		Connection con=DriverManager.getConnection(  
-    		"jdbc:mysql://localhost:3306/customersupport","root","password");  
-    		//here customersupport is database name, root is username and password  
-    		Statement stmt=con.createStatement();  
-    		ResultSet rs=stmt.executeQuery("select * from User");  
-    		while (rs.next())  
-    		userDatabase.put(rs.getString(1), rs.getString(4));
-    		con.close();
-    	}catch(Exception e){ System.out.println(e);} 
+            Class.forName("com.mysql.cj.jdbc.Driver");  
+            Connection con=DriverManager.getConnection(  
+            "jdbc:mysql://localhost:3306/customersupport","root","password");  
+            //here customer-support is database name, root is username and password is password
+            Statement stmt=con.createStatement();  
+            ResultSet rs=stmt.executeQuery("select * from User;");  
+            while(rs.next())  
+            userDatabase.put(rs.getString(2), rs.getString(5));
+            con.close();  
+            }catch(Exception e){ System.out.println(e);}
     	//userDatabase.put("Nicholas", "password");
         //userDatabase.put("Sarah", "drowssap");
         //userDatabase.put("Mike", "wordpass");
